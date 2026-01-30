@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altai Eco Village | Коттеджный поселок</title>
+    <style>
+        /* --- CSS СТИЛИ --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* Навигация */
+        nav {
+            position: absolute; top: 0; left: 0; width: 100%; padding: 20px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 10; color: white;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a { margin-left: 20px; font-weight: 500; font-size: 0.9rem; }
+        .btn { background-color: #D68C45; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold; }
+        .btn:hover { background-color: #b57538; }
+
+        /* --- ВАЖНО: ПУТИ К КАРТИНКАМ ОБНОВЛЕНЫ (img/...) --- */
+
+        /* 1. HERO SECTION */
+        .hero {
+            height: 100vh;
+            /* Ссылка теперь ведет в папку img */
+            background-image: url('img/hero.jpg'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white; position: relative;
+        }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; text-transform: uppercase; }
+
+        /* 2. ABOUT SECTION */
+        .section { padding: 80px 5%; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-img {
+            height: 500px;
+            /* Ссылка теперь ведет в папку img */
+            background-image: url('img/about.jpg'); 
+            background-size: cover; background-position: center;
+            border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* 3. ACTIVITY SECTION */
+        .activity {
+            /* Ссылка теперь ведет в папку img */
+            background-image: url('img/activity.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            padding: 100px 5%; color: white; text-align: center; position: relative;
+        }
+        .activity::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+        .activity-content { position: relative; z-index: 2; }
+        .activity h2 { font-size: 3rem; margin-bottom: 20px; }
+
+        footer { background: #222; color: #aaa; padding: 50px 5%; text-align: center; }
+
+        /* Мобильный адаптив */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img { height: 300px; order: -1; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ALTAI VILLAGE</div>
+        <div class="nav-links">
+            <a href="#about">О месте</a>
+            <a href="#activity">Отдых</a>
+            <a href="#footer" class="btn">Бронь</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Твоё место силы</h1>
+            <p>Уединенные коттеджи в сердце горного Алтая.</p>
+            <br>
+            <a href="#footer" class="btn">Выбрать даты</a>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Возвращение к истокам</h2>
+                <p>Мы находимся там, где заканчиваются дороги. Дома из кедра, панорамные окна и тишина.</p>
+            </div>
+            <div class="about-img"></div>
+        </div>
+    </section>
+
+    <section id="activity" class="activity">
+        <div class="activity-content">
+            <h2>Алтай — это движение</h2>
+            <p style="margin-bottom: 30px;">Рафтинг, кони, горы.</p>
+            <a href="#footer" class="btn">Маршруты</a>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <p>© 2026 Altai Village</p>
+    </footer>
+
+</body>
+</html>
