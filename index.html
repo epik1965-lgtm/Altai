@@ -3,125 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altai Reserve | Эко-курорт</title>
+    <title>Altai Reserve | Виллы и Трансфер</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ЦВЕТОВАЯ ГАММА (ALTAI PREMIUM) --- */
+        /* --- PREMIUM STYLE CONFIG --- */
         :root {
-            --color-wood: #C28E64;       /* Кедр */
-            --color-pine: #1E2B25;       /* Темная хвоя */
-            --color-stone: #5C6760;      /* Скала */
-            --color-fog: #F3F4F1;        /* Туман (фон) */
+            --color-wood: #C28E64;
+            --color-pine: #1E2B25;
+            --color-stone: #5C6760;
+            --color-fog: #F3F4F1;
             --font-main: 'Manrope', sans-serif;
             --font-serif: 'Tenor Sans', sans-serif;
         }
 
-        /* Базовые настройки */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: var(--font-main);
-            background-color: var(--color-fog);
-            color: var(--color-pine);
-            line-height: 1.6;
-        }
-
+        body { font-family: var(--font-main); background-color: var(--color-fog); color: var(--color-pine); line-height: 1.6; }
         h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Кнопки */
+        /* КНОПКИ */
         .btn {
-            display: inline-block;
-            padding: 18px 40px;
-            background-color: var(--color-pine);
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: 0.3s;
-            border: 1px solid var(--color-pine);
-            cursor: pointer;
+            display: inline-block; padding: 18px 40px; background-color: var(--color-pine); color: white;
+            text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem; text-decoration: none;
+            transition: 0.3s; border: 1px solid var(--color-pine); cursor: pointer;
         }
         .btn:hover { background-color: transparent; color: var(--color-pine); }
         .btn-outline { background: transparent; border: 1px solid white; color: white; margin-left: 20px; }
         .btn-outline:hover { background: white; color: var(--color-pine); }
 
-        /* Навигация */
+        /* НАВИГАЦИЯ */
         nav {
             position: absolute; top: 0; left: 0; width: 100%; padding: 30px 6%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 10; color: white; border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; align-items: center; z-index: 10;
+            color: white; border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .logo { font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 3px; }
-        .nav-links a { color: white; margin-left: 30px; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; opacity: 0.8; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; color: var(--color-wood); }
+        .logo { font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: 3px; }
+        .nav-links a { color: white; margin-left: 30px; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
+        .nav-links a:hover { color: var(--color-wood); }
 
-        /* --- 1. HERO SECTION (Главная) --- */
+        /* HERO */
         .hero {
             height: 100vh;
-            /* ЗДЕСЬ СТОИТ hero.jpg */
-            background-image: url('hero.jpg'); 
+            background-image: url('hero.jpg'); /* Файл 1 */
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: white; position: relative;
         }
-        .hero::after { 
-            content: ''; position: absolute; inset: 0; 
-            background: linear-gradient(180deg, rgba(30,43,37,0.4) 0%, rgba(30,43,37,0.2) 100%); 
-        }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,43,37,0.5) 0%, rgba(30,43,37,0.3) 100%); }
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 30px; line-height: 1.2; }
-        .subtitle { display: block; margin-bottom: 20px; color: var(--color-wood); font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
 
-        /* --- СЕКЦИИ --- */
-        section { padding: 100px 6%; }
+        /* ОБЩИЕ СЕКЦИИ */
+        section { padding: 90px 6%; }
+
+        /* О ДОМАХ (Список удобств) */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
         
-        /* --- 2. ABOUT SECTION (О нас) --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-text h2 { font-size: 2.5rem; margin-bottom: 30px; color: var(--color-pine); }
-        .about-text p { margin-bottom: 20px; color: var(--color-stone); font-size: 1.05rem; }
-        
-        .about-img {
-            width: 100%; height: 600px; object-fit: cover;
-            border-radius: 4px;
-            box-shadow: 20px 20px 0px var(--color-wood); /* Дизайнерская тень */
+        .amenities-list { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .amenity { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--color-stone); }
+        .check-icon { color: var(--color-wood); font-weight: bold; }
+
+        /* ИНФРАСТРУКТУРА (Бассейн и т.д.) */
+        .features { background-color: var(--color-pine); color: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+        .feature-card { padding: 30px 20px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .feature-card:hover { border-color: var(--color-wood); background: rgba(255,255,255,0.02); }
+        .feature-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--color-wood); }
+        .feature-card p { font-size: 0.85rem; opacity: 0.7; }
+
+        /* ТРАНСФЕР И ЛОКАЦИЯ */
+        .location { background: white; }
+        .location-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
+        .loc-text { flex: 1; min-width: 300px; }
+        .loc-box { 
+            background: var(--color-fog); padding: 40px; flex: 1; min-width: 300px; 
+            border-left: 4px solid var(--color-wood); 
         }
 
-        /* --- БЛОК ПРЕИМУЩЕСТВ --- */
-        .features { background-color: var(--color-pine); color: white; }
-        .features h2 { color: white; text-align: center; margin-bottom: 60px; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .feature-item { text-align: center; padding: 40px 20px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .feature-item:hover { border-color: var(--color-wood); transform: translateY(-5px); }
-        .feature-item h3 { margin: 20px 0 15px; font-size: 1.2rem; color: var(--color-wood); }
-        .feature-item p { opacity: 0.7; font-size: 0.9rem; }
-        .icon { font-size: 2rem; color: var(--color-wood); margin-bottom: 15px; }
-
-        /* --- 3. ACTIVITY SECTION (Впечатления) --- */
-        .experience {
-            /* ЗДЕСЬ СТОИТ activity.jpg */
-            background-image: url('activity.jpg');
+        /* АКТИВНОСТИ */
+        .activity {
+            background-image: url('activity.jpg'); /* Файл 3 */
             background-size: cover; background-position: center; background-attachment: fixed;
-            height: 80vh; display: flex; align-items: center; justify-content: center;
+            height: 70vh; display: flex; align-items: center; justify-content: center;
             position: relative; text-align: center; color: white;
         }
-        .experience::before { content: ''; position: absolute; inset: 0; background: rgba(30,43,37,0.5); }
-        .exp-content { position: relative; z-index: 2; max-width: 700px; padding: 0 20px; }
+        .activity::before { content: ''; position: absolute; inset: 0; background: rgba(30,43,37,0.6); }
+        .activity-content { position: relative; z-index: 2; }
 
-        /* Футер */
-        footer { background: #151E1A; color: #889; padding: 60px 6%; text-align: center; font-size: 0.9rem; }
-        footer p { margin-top: 20px; opacity: 0.5; }
+        footer { background: #151E1A; color: #889; padding: 50px 6%; text-align: center; font-size: 0.9rem; }
 
-        /* Адаптив (Мобильные) */
+        /* MOBILE */
         @media (max-width: 900px) {
-            .hero h1 { font-size: 2.2rem; }
-            .about-grid, .features-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .about-grid, .features-grid, .location-container { grid-template-columns: 1fr; flex-direction: column; }
             .nav-links { display: none; }
-            .about-img { height: 350px; margin-top: 30px; }
-            section { padding: 60px 5%; }
+            .about-img { height: 300px; order: -1; }
         }
     </style>
 </head>
@@ -130,80 +110,101 @@
     <nav>
         <div class="logo">ALTAI</div>
         <div class="nav-links">
-            <a href="#about">Концепция</a>
-            <a href="#features">Условия</a>
-            <a href="#contact">Бронь</a>
+            <a href="#houses">Виллы</a>
+            <a href="#service">Сервис</a>
+            <a href="#location">Трансфер</a>
+            <a href="#contact">Контакты</a>
         </div>
-        <a href="#contact" class="btn" style="padding: 12px 25px; background: white; color: var(--color-pine); border: none;">Заезд</a>
+        <a href="#contact" class="btn" style="padding: 10px 20px; background: white; color: var(--color-pine); border: none;">Бронь</a>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <span class="subtitle">Природный заповедник тишины</span>
-            <h1>Возвращение<br>к истокам</h1>
-            <div style="margin-top: 40px;">
-                <a href="#contact" class="btn">Выбрать даты</a>
-                <a href="#about" class="btn btn-outline">О месте</a>
-            </div>
+            <span style="color: var(--color-wood); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem;">Премиум Эко-Отель</span>
+            <h1>Отдых в горах<br>с комфортом 5*</h1>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">Подогреваемый бассейн, трансфер и виллы с панорамным видом.</p>
+            <a href="#contact" class="btn">Онлайн бронирование</a>
         </div>
     </header>
 
-    <section id="about">
+    <section id="houses">
         <div class="about-grid">
             <div class="about-text">
-                <span style="color: var(--color-wood); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Философия</span>
-                <h2>Дыхание тайги</h2>
-                <p>Мы создали пространство, где современный комфорт не спорит с величием гор. Кедровый сруб, натуральный камень и отсутствие пластика.</p>
-                <p>Панорамные окна стирают границу между уютной гостиной и вековым лесом.</p>
+                <span style="color: var(--color-wood); font-weight: bold; text-transform: uppercase;">Размещение</span>
+                <h2 style="margin: 15px 0 25px;">Кедровые Шале</h2>
+                <p>Каждый дом расположен так, чтобы вы не видели соседей. Идеально для пар и семей, ценящих приватность.</p>
                 
-                <div style="display: flex; gap: 30px; margin-top: 30px;">
-                    <div>
-                        <h3 style="font-size: 2rem; color: var(--color-wood);">12</h3>
-                        <span style="font-size: 0.7rem; color: var(--color-stone); letter-spacing: 1px;">ВИЛЛ</span>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 2rem; color: var(--color-wood);">850м</h3>
-                        <span style="font-size: 0.7rem; color: var(--color-stone); letter-spacing: 1px;">ВЫСОТА</span>
-                    </div>
+                <div class="amenities-list">
+                    <div class="amenity"><span class="check-icon">✓</span> Панорамные окна</div>
+                    <div class="amenity"><span class="check-icon">✓</span> Теплые полы</div>
+                    <div class="amenity"><span class="check-icon">✓</span> Ортопедические матрасы</div>
+                    <div class="amenity"><span class="check-icon">✓</span> Быстрый Wi-Fi (Starlink)</div>
+                    <div class="amenity"><span class="check-icon">✓</span> Своя терраса</div>
+                    <div class="amenity"><span class="check-icon">✓</span> Мини-кухня и кофемашина</div>
                 </div>
             </div>
-            <img src="about.jpg" alt="Интерьер" class="about-img">
+            <img src="about.jpg" alt="Интерьер дома" class="about-img">
         </div>
     </section>
 
-    <section id="features" class="features">
-        <h2>Алтайский Комфорт</h2>
+    <section id="service" class="features">
+        <h2 style="text-align: center; margin-bottom: 40px;">Всё для отдыха</h2>
         <div class="features-grid">
-            <div class="feature-item">
-                <div class="icon">✦</div>
-                <h3>Тишина</h3>
-                <p>Никаких машин и музыки. Только шум горной реки.</p>
+            <div class="feature-card">
+                <h3>Бассейн</h3>
+                <p>Подогреваемый открытый бассейн с видом на горы. Работает круглый год.</p>
             </div>
-            <div class="feature-item">
-                <div class="icon">↟</div>
-                <h3>Эко-Материалы</h3>
-                <p>Массив кедра, лён, камень и органическая косметика.</p>
+            <div class="feature-card">
+                <h3>SPA & Баня</h3>
+                <p>Русская баня на дровах, сибирский чан и массажный кабинет.</p>
             </div>
-            <div class="feature-item">
-                <div class="icon">≈</div>
-                <h3>SPA & Detox</h3>
-                <p>Пантовые ванны и травяные чаи собственного сбора.</p>
+            <div class="feature-card">
+                <h3>Гастрономия</h3>
+                <p>Ресторан локальной кухни и доставка еды (Room Service) в домики.</p>
+            </div>
+            <div class="feature-card">
+                <h3>BBQ Зоны</h3>
+                <p>Оборудованные мангальные зоны у каждого коттеджа (уголь предоставляем).</p>
             </div>
         </div>
     </section>
 
-    <section class="experience">
-        <div class="exp-content">
-            <h2>Больше, чем отдых</h2>
-            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">Треккинг к ледникам, рафтинг по Катуни или медитация.</p>
-            <a href="#contact" class="btn">Маршруты</a>
+    <section id="location" class="location">
+        <div class="location-container">
+            <div class="loc-text">
+                <h2 style="color: var(--color-pine); margin-bottom: 20px;">Как добраться?</h2>
+                <p style="margin-bottom: 15px;">Мы находимся в уединенном месте, вдали от трассы, но с удобным подъездом.</p>
+                <p><strong>Аэропорт Горно-Алтайск:</strong> 40 км (50 мин)</p>
+                <p><strong>Манжерок:</strong> 15 км (20 мин)</p>
+                <br>
+                <a href="#contact" class="btn" style="padding: 12px 30px;">Заказать трансфер</a>
+            </div>
+            <div class="loc-box">
+                <h3 style="color: var(--color-wood); margin-bottom: 15px;">Трансфер</h3>
+                <p style="margin-bottom: 15px;">Вам не нужно искать такси. Мы встретим вас в аэропорту на комфортабельном авто.</p>
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 10px;">• Встреча с табличкой</li>
+                    <li style="margin-bottom: 10px;">• Помощь с багажом</li>
+                    <li>• Детские кресла по запросу</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="activity">
+        <div class="activity-content">
+            <h2>Скучно не будет</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Организуем экскурсии: джип-туры, кони, сплавы.</p>
+            <div style="font-size: 1.5rem; letter-spacing: 5px; margin-top: 20px;">ALTAI RESERVE</div>
         </div>
     </section>
 
     <footer id="contact">
-        <h3 style="color: white; margin-bottom: 20px;">ALTAI RESERVE</h3>
-        <p>+7 (999) 000-00-00 • hello@altai.eco</p>
-        <p>© 2026. Все права защищены.</p>
+        <h3 style="color: white; margin-bottom: 20px;">БРОНИРОВАНИЕ</h3>
+        <p style="font-size: 1.2rem; color: var(--color-wood);">+7 (999) 000-00-00</p>
+        <p style="margin-bottom: 30px;">hello@altai.eco</p>
+        <a href="#" class="btn" style="background: white; color: var(--color-pine); border: none;">Проверить свободные даты</a>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.4;">© 2026 Altai Reserve</p>
     </footer>
 
 </body>
