@@ -3,36 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altai Reserve | Виллы и Трансфер</title>
+    <title>Altai Reserve | 5* Eco Resort</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
 
     <style>
-        /* --- PREMIUM STYLE CONFIG --- */
+        /* --- PREMIUM CONFIG --- */
         :root {
-            --color-wood: #C28E64;
-            --color-pine: #1E2B25;
-            --color-stone: #5C6760;
-            --color-fog: #F3F4F1;
+            --color-wood: #C28E64;       /* Медь/Кедр */
+            --color-pine: #1E2B25;       /* Глубокий зеленый */
+            --color-sand: #F5F5F2;       /* Песочный фон */
+            --color-gold: #D4AF37;       /* Золото для звезд */
             --font-main: 'Manrope', sans-serif;
             --font-serif: 'Tenor Sans', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-main); background-color: var(--color-fog); color: var(--color-pine); line-height: 1.6; }
+        body { font-family: var(--font-main); background-color: var(--color-sand); color: var(--color-pine); line-height: 1.6; }
+        
         h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
         
         /* КНОПКИ */
         .btn {
-            display: inline-block; padding: 18px 40px; background-color: var(--color-pine); color: white;
+            display: inline-block; padding: 16px 32px; background-color: var(--color-pine); color: white;
             text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.8rem; text-decoration: none;
             transition: 0.3s; border: 1px solid var(--color-pine); cursor: pointer;
         }
         .btn:hover { background-color: transparent; color: var(--color-pine); }
-        .btn-outline { background: transparent; border: 1px solid white; color: white; margin-left: 20px; }
-        .btn-outline:hover { background: white; color: var(--color-pine); }
+        .btn-white { background: white; color: var(--color-pine); border: 1px solid white; }
+        .btn-white:hover { background: transparent; color: white; }
+
+        /* ЗВЕЗДЫ */
+        .stars { color: var(--color-gold); font-size: 1.2rem; letter-spacing: 5px; margin-bottom: 15px; display: block; }
 
         /* НАВИГАЦИЯ */
         nav {
@@ -42,169 +46,231 @@
         }
         .logo { font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: 3px; }
         .nav-links a { color: white; margin-left: 30px; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; opacity: 0.9; }
-        .nav-links a:hover { color: var(--color-wood); }
 
         /* HERO */
         .hero {
             height: 100vh;
-            background-image: url('hero.jpg'); /* Файл 1 */
+            background-image: url('hero.jpg'); 
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: white; position: relative;
         }
-        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,43,37,0.5) 0%, rgba(30,43,37,0.3) 100%); }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30,43,37,0.4) 0%, rgba(30,43,37,0.2) 100%); }
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
 
-        /* ОБЩИЕ СЕКЦИИ */
+        /* СЕКЦИИ */
         section { padding: 90px 6%; }
 
-        /* О ДОМАХ (Список удобств) */
+        /* УДОБСТВА (ДЕТАЛИЗАЦИЯ) */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
+        .about-img { width: 100%; height: 600px; object-fit: cover; border-radius: 4px; box-shadow: 20px 20px 0 var(--color-wood); }
         
-        .amenities-list { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .amenity { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--color-stone); }
-        .check-icon { color: var(--color-wood); font-weight: bold; }
+        .details-list { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .detail-item { font-size: 0.9rem; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .detail-title { font-weight: 600; display: block; color: var(--color-pine); margin-bottom: 4px; }
+        .detail-desc { font-size: 0.8rem; color: #666; }
 
-        /* ИНФРАСТРУКТУРА (Бассейн и т.д.) */
+        /* ОФФЕРЫ (НОВЫЙ БЛОК) */
+        .offers { background: white; }
+        .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .offer-card { 
+            background: var(--color-sand); padding: 40px 30px; text-align: center; transition: 0.3s; 
+            border: 1px solid transparent; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .offer-card:hover { border-color: var(--color-wood); transform: translateY(-5px); background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .offer-tag { background: var(--color-wood); color: white; padding: 5px 10px; font-size: 0.7rem; text-transform: uppercase; display: inline-block; margin-bottom: 20px; }
+        .price { font-size: 1.5rem; font-family: var(--font-serif); margin: 20px 0; color: var(--color-pine); }
+        .old-price { text-decoration: line-through; color: #999; font-size: 1rem; margin-right: 10px; }
+
+        /* ИНФРАСТРУКТУРА */
         .features { background-color: var(--color-pine); color: white; }
         .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
-        .feature-card { padding: 30px 20px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
-        .feature-card:hover { border-color: var(--color-wood); background: rgba(255,255,255,0.02); }
+        .feature-card { padding: 20px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
         .feature-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--color-wood); }
-        .feature-card p { font-size: 0.85rem; opacity: 0.7; }
 
-        /* ТРАНСФЕР И ЛОКАЦИЯ */
-        .location { background: white; }
-        .location-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
-        .loc-text { flex: 1; min-width: 300px; }
-        .loc-box { 
-            background: var(--color-fog); padding: 40px; flex: 1; min-width: 300px; 
-            border-left: 4px solid var(--color-wood); 
-        }
-
-        /* АКТИВНОСТИ */
+        /* LOCATION & FOOTER */
+        .location { background: white; display: flex; gap: 50px; align-items: center; justify-content: space-between; }
+        .loc-info h2 { margin-bottom: 20px; }
+        
         .activity {
-            background-image: url('activity.jpg'); /* Файл 3 */
-            background-size: cover; background-position: center; background-attachment: fixed;
-            height: 70vh; display: flex; align-items: center; justify-content: center;
-            position: relative; text-align: center; color: white;
+            background-image: url('activity.jpg');
+            background-size: cover; background-position: center; height: 70vh; 
+            display: flex; align-items: center; justify-content: center; position: relative; color: white; text-align: center;
         }
-        .activity::before { content: ''; position: absolute; inset: 0; background: rgba(30,43,37,0.6); }
+        .activity::before { content: ''; position: absolute; inset: 0; background: rgba(30,43,37,0.5); }
         .activity-content { position: relative; z-index: 2; }
 
-        footer { background: #151E1A; color: #889; padding: 50px 6%; text-align: center; font-size: 0.9rem; }
+        footer { background: #111; color: #888; padding: 60px 6%; text-align: center; }
 
         /* MOBILE */
         @media (max-width: 900px) {
-            .hero h1 { font-size: 2rem; }
-            .about-grid, .features-grid, .location-container { grid-template-columns: 1fr; flex-direction: column; }
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid, .features-grid, .offers-grid, .details-list { grid-template-columns: 1fr; }
+            .location { flex-direction: column; }
             .nav-links { display: none; }
-            .about-img { height: 300px; order: -1; }
+            .about-img { height: 350px; margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ALTAI</div>
+        <div class="logo">ALTAI RESERVE</div>
         <div class="nav-links">
             <a href="#houses">Виллы</a>
-            <a href="#service">Сервис</a>
-            <a href="#location">Трансфер</a>
+            <a href="#offers">Акции</a>
+            <a href="#service">Инфраструктура</a>
             <a href="#contact">Контакты</a>
         </div>
-        <a href="#contact" class="btn" style="padding: 10px 20px; background: white; color: var(--color-pine); border: none;">Бронь</a>
+        <a href="#contact" class="btn btn-white">Забронировать</a>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <span style="color: var(--color-wood); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem;">Премиум Эко-Отель</span>
-            <h1>Отдых в горах<br>с комфортом 5*</h1>
-            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">Подогреваемый бассейн, трансфер и виллы с панорамным видом.</p>
-            <a href="#contact" class="btn">Онлайн бронирование</a>
+            <div class="stars">★★★★★</div>
+            <span style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;">Premium Eco Resort</span>
+            <h1>Искусство отдыха<br>в горах Алтая</h1>
+            <p style="margin-bottom: 40px; font-size: 1.1rem; opacity: 0.9;">Приватные виллы с бассейном и сервисом уровня 5 звезд.</p>
+            <a href="#contact" class="btn btn-white">Выбрать виллу</a>
         </div>
     </header>
 
     <section id="houses">
         <div class="about-grid">
             <div class="about-text">
-                <span style="color: var(--color-wood); font-weight: bold; text-transform: uppercase;">Размещение</span>
-                <h2 style="margin: 15px 0 25px;">Кедровые Шале</h2>
-                <p>Каждый дом расположен так, чтобы вы не видели соседей. Идеально для пар и семей, ценящих приватность.</p>
+                <span style="color: var(--color-wood); font-weight: 600; text-transform: uppercase;">Размещение</span>
+                <h2 style="margin: 15px 0 20px;">Внимание к деталям</h2>
+                <p>Мы знаем, что комфорт кроется в мелочах. Поэтому в наших домах есть не только стены, но и забота.</p>
                 
-                <div class="amenities-list">
-                    <div class="amenity"><span class="check-icon">✓</span> Панорамные окна</div>
-                    <div class="amenity"><span class="check-icon">✓</span> Теплые полы</div>
-                    <div class="amenity"><span class="check-icon">✓</span> Ортопедические матрасы</div>
-                    <div class="amenity"><span class="check-icon">✓</span> Быстрый Wi-Fi (Starlink)</div>
-                    <div class="amenity"><span class="check-icon">✓</span> Своя терраса</div>
-                    <div class="amenity"><span class="check-icon">✓</span> Мини-кухня и кофемашина</div>
+                <div class="details-list">
+                    <div class="detail-item">
+                        <span class="detail-title">Сон как в облаке</span>
+                        <span class="detail-desc">Матрасы Askona King Size и меню подушек.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-title">Premium Косметика</span>
+                        <span class="detail-desc">Zielinski & Rozen в каждой ванной.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-title">Техника Dyson</span>
+                        <span class="detail-desc">Фены Dyson Supersonic для ваших волос.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-title">Кофе-станция</span>
+                        <span class="detail-desc">Кофемашина Nespresso и капсулы.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-title">Тепло</span>
+                        <span class="detail-desc">Теплые полы по всему периметру.</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-title">Связь</span>
+                        <span class="detail-desc">Wi-Fi Starlink (100 Мбит/с).</span>
+                    </div>
                 </div>
             </div>
-            <img src="about.jpg" alt="Интерьер дома" class="about-img">
+            <img src="about.jpg" alt="Интерьер" class="about-img">
+        </div>
+    </section>
+
+    <section id="offers" class="offers">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <span style="color: var(--color-wood); font-weight: 600; text-transform: uppercase;">Специальные предложения</span>
+            <h2 style="margin-bottom: 40px; margin-top: 10px;">Выберите свой сценарий</h2>
+        </div>
+        
+        <div class="offers-grid">
+            <div class="offer-card">
+                <div>
+                    <span class="offer-tag">Популярное</span>
+                    <h3>Романтический Уикенд</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #666;">2 ночи для двоих, украшение номера, шампанское и завтраки в постель.</p>
+                </div>
+                <div>
+                    <div class="price">45 000 ₽</div>
+                    <a href="#contact" class="btn" style="width: 100%; padding: 12px;">Забронировать</a>
+                </div>
+            </div>
+            
+            <div class="offer-card">
+                <div>
+                    <span class="offer-tag" style="background: var(--color-pine);">Для семьи</span>
+                    <h3>Семейные каникулы</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #666;">Дети до 7 лет бесплатно. Доп. место в подарок. Мангальная зона включена.</p>
+                </div>
+                <div>
+                    <div class="price"><span class="old-price">25 000</span> 19 000 ₽ <span style="font-size: 0.8rem;">/ сутки</span></div>
+                    <a href="#contact" class="btn" style="width: 100%; padding: 12px;">Узнать даты</a>
+                </div>
+            </div>
+
+            <div class="offer-card">
+                <div>
+                    <span class="offer-tag" style="background: var(--color-stone);">Long Stay</span>
+                    <h3>Живи дольше — плати меньше</h3>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #666;">Скидка 20% при бронировании от 5 ночей. Трансфер в подарок.</p>
+                </div>
+                <div>
+                    <div class="price">-20%</div>
+                    <a href="#contact" class="btn" style="width: 100%; padding: 12px;">Рассчитать</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="service" class="features">
-        <h2 style="text-align: center; margin-bottom: 40px;">Всё для отдыха</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">Территория комфорта</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <h3>Бассейн</h3>
-                <p>Подогреваемый открытый бассейн с видом на горы. Работает круглый год.</p>
+                <h3>Подогреваемый бассейн</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Панорамный вид, +28°C круглый год.</p>
             </div>
             <div class="feature-card">
-                <h3>SPA & Баня</h3>
-                <p>Русская баня на дровах, сибирский чан и массажный кабинет.</p>
+                <h3>Баня и SPA</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Сибирский чан и парение вениками.</p>
             </div>
             <div class="feature-card">
-                <h3>Гастрономия</h3>
-                <p>Ресторан локальной кухни и доставка еды (Room Service) в домики.</p>
+                <h3>Ресторан</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Авторская кухня из локальных продуктов.</p>
             </div>
             <div class="feature-card">
-                <h3>BBQ Зоны</h3>
-                <p>Оборудованные мангальные зоны у каждого коттеджа (уголь предоставляем).</p>
+                <h3>Консьерж-сервис</h3>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Любые поручения 24/7.</p>
             </div>
         </div>
     </section>
 
-    <section id="location" class="location">
-        <div class="location-container">
-            <div class="loc-text">
-                <h2 style="color: var(--color-pine); margin-bottom: 20px;">Как добраться?</h2>
-                <p style="margin-bottom: 15px;">Мы находимся в уединенном месте, вдали от трассы, но с удобным подъездом.</p>
-                <p><strong>Аэропорт Горно-Алтайск:</strong> 40 км (50 мин)</p>
-                <p><strong>Манжерок:</strong> 15 км (20 мин)</p>
-                <br>
-                <a href="#contact" class="btn" style="padding: 12px 30px;">Заказать трансфер</a>
-            </div>
-            <div class="loc-box">
-                <h3 style="color: var(--color-wood); margin-bottom: 15px;">Трансфер</h3>
-                <p style="margin-bottom: 15px;">Вам не нужно искать такси. Мы встретим вас в аэропорту на комфортабельном авто.</p>
-                <ul style="list-style: none; font-size: 0.9rem;">
-                    <li style="margin-bottom: 10px;">• Встреча с табличкой</li>
-                    <li style="margin-bottom: 10px;">• Помощь с багажом</li>
-                    <li>• Детские кресла по запросу</li>
-                </ul>
-            </div>
+    <section class="location">
+        <div class="loc-info">
+            <h2>Как добраться?</h2>
+            <p style="margin-bottom: 15px;">Мы ценим ваше время, поэтому берем логистику на себя.</p>
+            <ul style="list-style: none; margin-bottom: 30px;">
+                <li style="margin-bottom: 10px;">✈ <strong>Аэропорт Горно-Алтайск:</strong> 40 мин</li>
+                <li>🚘 <strong>Трансфер:</strong> Toyota Land Cruiser 200 / Mercedes V-class</li>
+            </ul>
+            <a href="#contact" class="btn">Заказать трансфер</a>
+        </div>
+        <div style="background: #eee; padding: 40px; border-radius: 4px; max-width: 400px; font-size: 0.9rem;">
+            <p><strong>Адрес:</strong> Республика Алтай, Чемальский район, урочище...</p>
+            <p style="margin-top: 10px; color: #666;">Точные координаты отправляем после бронирования для вашей приватности.</p>
         </div>
     </section>
 
     <section class="activity">
         <div class="activity-content">
-            <h2>Скучно не будет</h2>
-            <p style="margin-bottom: 30px; opacity: 0.9;">Организуем экскурсии: джип-туры, кони, сплавы.</p>
-            <div style="font-size: 1.5rem; letter-spacing: 5px; margin-top: 20px;">ALTAI RESERVE</div>
+            <div class="stars">★★★★★</div>
+            <h2>Впечатления</h2>
+            <p style="margin-bottom: 30px;">Вертолетные экскурсии к горе Белуха и индивидуальные туры.</p>
+            <a href="#contact" class="btn btn-white">Получить каталог туров</a>
         </div>
     </section>
 
     <footer id="contact">
         <h3 style="color: white; margin-bottom: 20px;">БРОНИРОВАНИЕ</h3>
-        <p style="font-size: 1.2rem; color: var(--color-wood);">+7 (999) 000-00-00</p>
-        <p style="margin-bottom: 30px;">hello@altai.eco</p>
-        <a href="#" class="btn" style="background: white; color: var(--color-pine); border: none;">Проверить свободные даты</a>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.4;">© 2026 Altai Reserve</p>
+        <p style="font-size: 1.5rem; color: var(--color-wood); margin-bottom: 10px;">+7 (999) 000-00-00</p>
+        <p style="margin-bottom: 40px;">booking@altai-reserve.ru</p>
+        <p style="opacity: 0.4; font-size: 0.8rem;">© 2026 Altai Reserve. Все права защищены.</p>
     </footer>
 
 </body>
